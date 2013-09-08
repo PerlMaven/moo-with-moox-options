@@ -3,13 +3,13 @@ use MooX::Options;
 use 5.010;
 use Data::Dumper qw(Dumper);
 
-option verbose => (is => 'ro', doc => 'Print details');
+option verbose => (is => 'ro', doc => 'Print details', short => 'v');
 option file    => (is => 'ro', required => 1, format => 's',
     doc => 'File name to be processed');
 
 has counter => (is => 'rw', default => 0);
 #option ips => (is => 'ro', doc => 'IP addresses', format => 's@');
-option ips => (is => 'ro', doc => 'IP addresses', format => 's@', default => sub { [] } );
+option ips => (is => 'ro', doc => 'IP addresses', format => 's@', default => sub { [] }, autosplit => ',');
 
 sub run {
     my ($self) = @_;
